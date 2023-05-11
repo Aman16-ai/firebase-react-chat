@@ -1,24 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
+import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import { auth } from './firebase-config';
+import { useEffect } from 'react';
+import PrivateRoute from './components/PrivateRoute';
 function App() {
+  useEffect(()=> {
+    console.log('auth app',auth.currentUser)
+  },[])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+    <Routes>
+        <Route path='/' element={<PrivateRoute name="Dashboard"><Dashboard/></PrivateRoute>}/>
+        <Route path='/Login' element={<Login/>} />
+        <Route path='/register' element={<Register/>} />
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 

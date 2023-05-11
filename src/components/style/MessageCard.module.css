@@ -1,0 +1,30 @@
+.message-card {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    max-width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.message-card__content {
+    word-wrap: break-word;
+    margin-bottom: 5px;
+}
+
+.receiver {
+    align-self: flex-start;
+    background-color: #e5e5ea;
+}
+
+.sender {
+    align-self: flex-end;
+    background-color: #007aff;
+    color: #fff;
+}
+
+.sender .message-card__content {
+    color: #fff;
+}
